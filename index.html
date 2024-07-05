@@ -8,21 +8,21 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
-    let counter = 0;
-    function countUp() {
-      counter++;
-      //바뀐 데이터를 리렌더링하기위해 계속 렌더링을 해줘야함.
-      render();
+    function App() {
+      //useState의 배열의 첫번째 요소는 우리가 담으려는 data값이고
+      //두번째 요소는 이 data값을 바꿀 때 사용하는 modifier
+      //modifier를 가지고 state를 변경할 때 리렌더링
+      const [counter, setCounter] = React.useState(0);
+      const onClick = () => {
+        setCounter(counter + 1);
+      };
+      return (
+        <div>
+          <h3>Total Clicks: {counter}</h3>
+          <button onClick={onClick}>Click me</button>
+        </div>
+      );
     }
-    function render() {
-      ReactDOM.render(<App />, root);
-    }
-    const App = () => (
-      <div>
-        <h3>Total Clicks: {counter}</h3>
-        <button onClick={countUp}>Click me</button>
-      </div>
-    );
-    render();
+    ReactDOM.render(<App />, root);
   </script>
 </html>
