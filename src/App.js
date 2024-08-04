@@ -10,7 +10,7 @@ function App() {
       return;
     }
     setToDo("");
-    setToDos((currentArray) => [toDo, ...currentArray]);
+    setToDos((currentArray) => [...currentArray, toDo]);
   };
   return (
     <div>
